@@ -45,8 +45,7 @@ export const appData: AppData = {
         {
           id: "apdailininkas",
           title: "Apdailininkas",
-          image:
-            "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=500&q=80",
+          image: "/images/architektura/apdailininkas.webp",
           questions: [
             { text: "Gipso kartono plokštės naudojamos greitam sienų lyginimui bei pertvarų formavimui.", isTrue: true },
             { text: "Prieš dažant sieną užtenka ją tik nuplauti – specialus gruntavimas nėra būtinas.", isTrue: false },
@@ -58,8 +57,7 @@ export const appData: AppData = {
         {
           id: "plyteliu_klojejo_padejejas",
           title: "Plytelių klojėjo-tinkuotojo padėjėjas",
-          image:
-            "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=500&q=80",
+          image: "/images/architektura/plyteliu-klojejas.webp",
           questions: [
             { text: "Padėjėjo pagrindinė užduotis – tik stebėti meistro darbą ir neprisiliesti prie įrankių.", isTrue: false },
             { text: "Tinkuojant sienas, „švyturėliai“ (gairės) naudojami tam, kad tinko sluoksnis būtų idealiai lygus.", isTrue: true },
@@ -71,8 +69,7 @@ export const appData: AppData = {
         {
           id: "santechnikas",
           title: "Santechnikas",
-          image:
-            "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=500&q=80",
+          image: "/images/architektura/santechnikas.webp",
           questions: [
             { text: "Santechnikai montuoja ne tik vandentiekio, bet ir pastatų šildymo bei nuotekų sistemas.", isTrue: true },
             { text: "Sifonas po kriaukle montuojamas tam, kad sulaikytų nemalonius kvapus iš kanalizacijos.", isTrue: true },
@@ -123,7 +120,7 @@ export const appData: AppData = {
       professions: [
         {
           id: "it_technikas",
-          title: "IRT aptarnavimo technikas",
+          title: "Informacinių ir ryšių technologijų aptarnavimo technikas",
           image:
             "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&q=80",
           questions: [
@@ -489,7 +486,7 @@ export const appData: AppData = {
         },
         {
           id: "vairuot",
-          title: "Krovinių vežimo vairuotojas",
+          title: "Motorinių transporto priemonių kroviniams vežti vairuotojas",
           image:
             "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=500&q=80",
           questions: [
@@ -563,19 +560,6 @@ export const appData: AppData = {
             { text: "Agroversle pelnas priklauso išimtinai tik nuo gerų oro sąlygų.", isTrue: false },
             { text: "Didžioji dalis Lietuvoje užauginamo rapso perdirbama į biokurą.", isTrue: true },
             { text: "GPS diegimas ūkyje padeda ženkliai sumažinti trąšų sunaudojimą.", isTrue: true },
-          ],
-        },
-        {
-          id: "tr1",
-          title: "TR1 kategorijos traktorių vairavimas",
-          image:
-            "https://images.unsplash.com/photo-1592966831411-b1e956e18237?w=500&q=80",
-          questions: [
-            { text: "Su TR1 kategorija galima vairuoti bet kokio galingumo traktorių.", isTrue: false },
-            { text: "Kompaktiški japoniški traktoriukai puikiai pritaikomi sodybos priežiūrai ar tvorų tverimui.", isTrue: true },
-            { text: "Šiuolaikiniai traktoriai gali automatiškai vairuoti lauke naudodami GPS.", isTrue: true },
-            { text: "Traktoriaus padangų slėgis laukuose turi būti didesnis nei važiuojant asfaltu.", isTrue: false },
-            { text: "Traktorių galinio darbinio veleno (PTO) greitis visada yra tik 540 aps/min.", isTrue: false },
           ],
         },
         {

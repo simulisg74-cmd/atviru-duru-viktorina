@@ -57,22 +57,24 @@ export default function WinScreen() {
 
       <section
         aria-label="Patvirtinimas stende"
-        className="w-full animate-pulse-glow rounded-3xl border-4 border-amber-300 bg-slate-800 p-6"
+        className="w-full animate-pulse-glow rounded-3xl border-4 border-amber-300 bg-slate-800 p-4"
       >
         <p className="text-xl font-bold text-amber-300">
-          Parodyk šį ekraną stende
+          Parodyk šį ekraną stende ir atsiimki prizą.
         </p>
 
-        <time
-          dateTime={now.toISOString()}
-          className="mt-4 block font-mono text-6xl font-extrabold tabular-nums tracking-wider"
-        >
-          {formatTime(now)}
-        </time>
-        <p className="mt-1 text-sm text-slate-400">{formatDate(now)}</p>
+        <div className="mt-4 overflow-hidden rounded-2xl border-2 border-white/40 bg-slate-900 px-2 py-5">
+          <time
+            dateTime={now.toISOString()}
+            className="block whitespace-nowrap font-mono text-[length:min(3rem,10.5vw)] font-extrabold tabular-nums"
+          >
+            {formatTime(now)}
+          </time>
+          <p className="mt-2 text-sm text-slate-400">{formatDate(now)}</p>
+        </div>
 
         <p className="mt-4 text-sm font-semibold text-red-500">
-          (Ekrano nuotraukos negalioja – laikas turi tiksėti!)
+          Ekrano nuotraukos negalioja – laikas turi tiksėti!
         </p>
       </section>
     </main>
