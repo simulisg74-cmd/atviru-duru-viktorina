@@ -86,7 +86,7 @@ const SwipeCard = memo(function SwipeCard({
       ? "border-emerald-400"
       : hint === "left"
         ? "border-rose-400"
-        : "border-white/10";
+        : "border-slate-400/40";
 
   return (
     <TinderCard
@@ -101,19 +101,23 @@ const SwipeCard = memo(function SwipeCard({
       onSwipeRequirementUnfulfilled={handleUnfulfilled}
     >
       <div
-        className={`relative flex h-full flex-col overflow-hidden rounded-3xl border-4 bg-slate-800 shadow-2xl transition-colors ${border}`}
+        className={`relative flex h-full flex-col overflow-hidden rounded-3xl border-4 bg-quiz-card shadow-2xl transition-colors ${border}`}
       >
         <ProfessionImage
           src={profession.image}
+          icon={profession.icon}
           alt={profession.title}
           className="h-2/5 w-full"
+          iconClassName="text-8xl"
         />
 
         <div className="flex flex-1 flex-col justify-center gap-3 p-6">
-          <p className="text-sm font-semibold uppercase tracking-wide text-indigo-300">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
             Teiginys {index + 1} / {total}
           </p>
-          <p className="text-xl font-semibold leading-snug">{question.text}</p>
+          <p className="text-xl font-semibold leading-snug text-slate-900">
+            {question.text}
+          </p>
         </div>
 
         {/* Spalvinis sluoksnis velkant: žalia – TIESA, raudona – NETIESA. */}
@@ -213,7 +217,7 @@ export default function SwipeQuiz({
 
   if (total === 0) {
     return (
-      <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-6 bg-slate-900 p-6 text-center text-white">
+      <main className="mx-auto flex min-h-screen max-w-md flex-col items-center justify-center gap-6 bg-menu-bg p-6 text-center text-slate-900">
         <p>Šiai profesijai dar nėra teiginių.</p>
         <button
           type="button"
@@ -238,110 +242,112 @@ export default function SwipeQuiz({
   const current = Math.min(stats.swiped + 1, total);
 
   return (
-    <main className="mx-auto flex h-dvh max-w-md flex-col overflow-hidden overscroll-none bg-slate-900 p-6 text-white">
-      <header className="mb-4 flex items-center gap-3">
-        <button
-          type="button"
-          onClick={onExit}
-          aria-label="Grįžti į profesijas"
-          className="rounded-full bg-slate-800 p-2 transition hover:bg-slate-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-400"
+    <div className="bg-menu-bg">
+      <main className="mx-auto flex h-dvh max-w-md flex-col overflow-hidden overscroll-none bg-menu-bg p-6 text-slate-900">
+        <header className="mb-4 flex items-center gap-3">
+          <button
+            type="button"
+            onClick={onExit}
+            aria-label="Grįžti į profesijas"
+            className="rounded-full bg-white/60 p-2 text-slate-800 transition hover:bg-white/90 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-400"
+          >
+            <ArrowLeft aria-hidden="true" />
+          </button>
+          <span className="text-2xl" aria-hidden="true">
+            {sectorIcon}
+          </span>
+          <h1 className="text-sm font-semibold leading-tight text-slate-800">
+            {profession.title}
+          </h1>
+        </header>
+
+        <div
+          role="progressbar"
+          aria-label="Viktorinos eiga"
+          aria-valuemin={0}
+          aria-valuemax={total}
+          aria-valuenow={stats.swiped}
+          className="h-3 shrink-0 overflow-hidden rounded-full bg-slate-500/30"
         >
-          <ArrowLeft aria-hidden="true" />
-        </button>
-        <span className="text-2xl" aria-hidden="true">
-          {sectorIcon}
-        </span>
-        <h1 className="text-sm font-semibold leading-tight text-indigo-300">
-          {profession.title}
-        </h1>
-      </header>
-
-      <div
-        role="progressbar"
-        aria-label="Viktorinos eiga"
-        aria-valuemin={0}
-        aria-valuemax={total}
-        aria-valuenow={stats.swiped}
-        className="h-3 shrink-0 overflow-hidden rounded-full bg-slate-800"
-      >
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-indigo-400 to-fuchsia-400 transition-all duration-500"
-          style={{ width: `${(stats.swiped / total) * 100}%` }}
-        />
-      </div>
-      <div className="mt-2 flex shrink-0 justify-between text-sm text-slate-400">
-        <span>
-          Kortelė {current} iš {total}
-        </span>
-        <span>
-          Teisingai: <b className="text-white">{stats.score}</b>
-        </span>
-      </div>
-
-      {/* Kortelių sritis: touch-none, kad brūkštelėjimas nescrollintų puslapio. */}
-      <div className="relative mt-4 min-h-0 flex-1 touch-none">
-        {/* Kraštų indikatoriai */}
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 -left-6 z-20 w-20 bg-gradient-to-r from-rose-500/70 to-transparent transition-opacity duration-150 ${
-            hint === "left" ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute inset-y-0 -right-6 z-20 w-20 bg-gradient-to-l from-emerald-500/70 to-transparent transition-opacity duration-150 ${
-            hint === "right" ? "opacity-100" : "opacity-0"
-          }`}
-        />
-
-        {/* Atvirkštinė tvarka: pirmas klausimas DOM'e paskutinis, todėl yra viršuje. */}
-        {questions
-          .map((question, index) => ({ question, index }))
-          .reverse()
-          .map(({ question, index }) => (
-            <SwipeCard
-              key={index}
-              index={index}
-              total={total}
-              question={question}
-              profession={profession}
-              hint={index === stats.swiped ? hint : null}
-              onSwiped={handleSwiped}
-              onLeftScreen={handleLeftScreen}
-              onHint={setHint}
-              register={register}
-            />
-          ))}
-      </div>
-
-      <footer className="mt-4 shrink-0">
-        <div className="flex items-center justify-between gap-4">
-          <button
-            type="button"
-            onClick={() => swipeTop("left")}
-            aria-label="Netiesa"
-            className={`flex flex-1 flex-col items-center gap-1 rounded-2xl border-2 border-rose-500 py-3 font-bold text-rose-400 transition focus:outline-none focus-visible:ring-4 focus-visible:ring-rose-400 active:scale-95 ${
-              hint === "left" ? "scale-105 bg-rose-500/30" : "bg-rose-500/10"
-            }`}
-          >
-            <X aria-hidden="true" />
-            <span className="text-sm">← NETIESA</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => swipeTop("right")}
-            aria-label="Tiesa"
-            className={`flex flex-1 flex-col items-center gap-1 rounded-2xl border-2 border-emerald-500 py-3 font-bold text-emerald-400 transition focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400 active:scale-95 ${
-              hint === "right"
-                ? "scale-105 bg-emerald-500/30"
-                : "bg-emerald-500/10"
-            }`}
-          >
-            <Check aria-hidden="true" />
-            <span className="text-sm">TIESA →</span>
-          </button>
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-indigo-400 to-fuchsia-400 transition-all duration-500"
+            style={{ width: `${(stats.swiped / total) * 100}%` }}
+          />
         </div>
-      </footer>
-    </main>
+        <div className="mt-2 flex shrink-0 justify-between text-sm text-slate-600">
+          <span>
+            Kortelė {current} iš {total}
+          </span>
+          <span>
+            Teisingai: <b className="text-slate-900">{stats.score}</b>
+          </span>
+        </div>
+
+        {/* Kortelių sritis: touch-none, kad brūkštelėjimas nescrollintų puslapio. */}
+        <div className="relative mt-4 min-h-0 flex-1 touch-none">
+          {/* Kraštų indikatoriai */}
+          <div
+            aria-hidden="true"
+            className={`pointer-events-none absolute inset-y-0 -left-6 z-20 w-20 bg-gradient-to-r from-rose-500/70 to-transparent transition-opacity duration-150 ${
+              hint === "left" ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          <div
+            aria-hidden="true"
+            className={`pointer-events-none absolute inset-y-0 -right-6 z-20 w-20 bg-gradient-to-l from-emerald-500/70 to-transparent transition-opacity duration-150 ${
+              hint === "right" ? "opacity-100" : "opacity-0"
+            }`}
+          />
+
+          {/* Atvirkštinė tvarka: pirmas klausimas DOM'e paskutinis, todėl yra viršuje. */}
+          {questions
+            .map((question, index) => ({ question, index }))
+            .reverse()
+            .map(({ question, index }) => (
+              <SwipeCard
+                key={index}
+                index={index}
+                total={total}
+                question={question}
+                profession={profession}
+                hint={index === stats.swiped ? hint : null}
+                onSwiped={handleSwiped}
+                onLeftScreen={handleLeftScreen}
+                onHint={setHint}
+                register={register}
+              />
+            ))}
+        </div>
+
+        <footer className="mt-4 shrink-0">
+          <div className="flex items-center justify-between gap-4">
+            <button
+              type="button"
+              onClick={() => swipeTop("left")}
+              aria-label="Netiesa"
+              className={`flex flex-1 flex-col items-center gap-1 rounded-2xl border-2 border-rose-500 py-3 font-bold text-rose-700 transition focus:outline-none focus-visible:ring-4 focus-visible:ring-rose-400 active:scale-95 ${
+                hint === "left" ? "scale-105 bg-rose-500/30" : "bg-rose-500/10"
+              }`}
+            >
+              <X aria-hidden="true" />
+              <span className="text-sm">← NETIESA</span>
+            </button>
+            <button
+              type="button"
+              onClick={() => swipeTop("right")}
+              aria-label="Tiesa"
+              className={`flex flex-1 flex-col items-center gap-1 rounded-2xl border-2 border-emerald-500 py-3 font-bold text-emerald-700 transition focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400 active:scale-95 ${
+                hint === "right"
+                  ? "scale-105 bg-emerald-500/30"
+                  : "bg-emerald-500/10"
+              }`}
+            >
+              <Check aria-hidden="true" />
+              <span className="text-sm">TIESA →</span>
+            </button>
+          </div>
+        </footer>
+      </main>
+    </div>
   );
 }

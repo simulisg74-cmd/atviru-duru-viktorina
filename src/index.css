@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+  /* Profesijų pasirinkimo ekrano fonas: NCS S 2002-B (šviesiai pilka). */
+  --color-menu-bg: #bec2c3;
+  /* Viktorinos kortelė: šviesesnė pilka to paties atspalvio. */
+  --color-quiz-card: #dfe2e3;
+  /* Profesijų kortelių fonas: RAL 8012. Ankstesnis variantas: NCS S 6502-R = #6b6162. */
+  --color-card-bg: #592321;
   --animate-pulse-glow: pulse-glow 1.8s ease-in-out infinite;
 
   @keyframes pulse-glow {

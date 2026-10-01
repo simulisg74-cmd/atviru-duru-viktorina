@@ -1,30 +1,46 @@
 import { useState } from "react";
 
 interface ProfessionImageProps {
-  src: string;
+  /** Nuotraukos adresas. */
+  src?: string;
+  /** Emoji ikona; jei nurodyta, rodoma vietoj nuotraukos. */
+  icon?: string;
   alt: string;
   className?: string;
+  /** Ikonos dydžio klasė (Tailwind), pvz. `text-5xl`. */
+  iconClassName?: string;
 }
 
-/** Nuotrauka su atsargine vieta, jei paveikslėlio nepavyksta užkrauti. */
+/**
+ * Profesijos vaizdas: emoji ikona arba nuotrauka su atsargine vieta,
+ * jei paveikslėlio nepavyksta užkrauti.
+ * Ikona yra tekstas (ne SVG), kad nesutrikdytų `react-tinder-card` gestų.
+ */
 export default function ProfessionImage({
   src,
+  icon,
   alt,
   className = "",
+  iconClassName = "text-5xl",
 }: ProfessionImageProps) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  if (icon || failed || !src) {
     return (
       <div
         role="img"
         aria-label={alt}
-        className={`flex items-center justify-center bg-gradient-to-br from-indigo-600 to-fuchsia-600 text-5xl ${className}`}
+        className={`flex select-none items-center justify-center bg-gradient-to-br from-indigo-600 to-fuchsia-600 ${iconClassName} ${className}`}
       >
-        <span aria-hidden="true">🎓</span>
+        <span aria-hidden="true">{icon ?? "🎓"}</span>
       </div>
     );
   }
+
+  // SVG iliustracijos – ikonos be fono, rodomos visos (be apkarpymo).
+  const fit = src.toLowerCase().endsWith(".svg")
+    ? "object-contain p-2"
+    : "object-cover";
 
   return (
     <img
@@ -33,7 +49,7 @@ export default function ProfessionImage({
       draggable={false}
       loading="lazy"
       onError={() => setFailed(true)}
-      className={`pointer-events-none select-none object-cover ${className}`}
+      className={`pointer-events-none select-none ${fit} ${className}`}
     />
   );
 }

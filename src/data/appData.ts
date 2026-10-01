@@ -22,7 +22,13 @@ export interface Question {
 export interface Profession {
   id: string;
   title: string;
-  image: string;
+  /**
+   * Nuotraukos arba iliustracijos adresas. `.svg` failai rodomi kaip ikonos
+   * be fono (object-contain), kiti – kaip užpildanti nuotrauka.
+   */
+  image?: string;
+  /** Emoji ikona, rodoma vietoj `image`. */
+  icon?: string;
   questions: readonly Question[];
 }
 
@@ -45,7 +51,7 @@ export const appData: AppData = {
         {
           id: "apdailininkas",
           title: "Apdailininkas",
-          image: "/images/architektura/apdailininkas.webp",
+          image: "/icons/architektura/apdailininkas.svg",
           questions: [
             { text: "Gipso kartono plokštės naudojamos greitam sienų lyginimui bei pertvarų formavimui.", isTrue: true },
             { text: "Prieš dažant sieną užtenka ją tik nuplauti – specialus gruntavimas nėra būtinas.", isTrue: false },
@@ -57,7 +63,7 @@ export const appData: AppData = {
         {
           id: "plyteliu_klojejo_padejejas",
           title: "Plytelių klojėjo-tinkuotojo padėjėjas",
-          image: "/images/architektura/plyteliu-klojejas.webp",
+          image: "/icons/architektura/plyteliu_klojejo_padejejas.svg",
           questions: [
             { text: "Padėjėjo pagrindinė užduotis – tik stebėti meistro darbą ir neprisiliesti prie įrankių.", isTrue: false },
             { text: "Tinkuojant sienas, „švyturėliai“ (gairės) naudojami tam, kad tinko sluoksnis būtų idealiai lygus.", isTrue: true },
@@ -69,7 +75,7 @@ export const appData: AppData = {
         {
           id: "santechnikas",
           title: "Santechnikas",
-          image: "/images/architektura/santechnikas.webp",
+          image: "/icons/architektura/santechnikas.svg",
           questions: [
             { text: "Santechnikai montuoja ne tik vandentiekio, bet ir pastatų šildymo bei nuotekų sistemas.", isTrue: true },
             { text: "Sifonas po kriaukle montuojamas tam, kad sulaikytų nemalonius kvapus iš kanalizacijos.", isTrue: true },
@@ -88,8 +94,7 @@ export const appData: AppData = {
         {
           id: "siuvejas",
           title: "Siuvėjas",
-          image:
-            "https://images.unsplash.com/photo-1551893665-f843f600794e?w=500&q=80",
+          image: "/icons/gamyba/siuvejas.svg",
           questions: [
             { text: "Siuvimo mašinose viršutinis ir apatinis siūlai susipina audinio viduryje, suformuodami dygsnį.", isTrue: true },
             { text: "Visiems audiniams (šilkui, džinsui, odai) siūti visada naudojama ta pati universali adata.", isTrue: false },
@@ -101,8 +106,7 @@ export const appData: AppData = {
         {
           id: "medienos_staklininkas",
           title: "Medienos apdirbimo staklininkas",
-          image:
-            "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=500&q=80",
+          image: "/icons/gamyba/medienos_staklininkas.svg",
           questions: [
             { text: "Medienos drėgnumas turi didžiulę įtaką jos apdirbimo kokybei ir gaminio ilgaamžiškumui.", isTrue: true },
             { text: "Kietmedžiui (ąžuolui) ir minkštai medienai staklėse visada taikomi tie patys pjovimo greičiai.", isTrue: false },
@@ -121,8 +125,7 @@ export const appData: AppData = {
         {
           id: "it_technikas",
           title: "Informacinių ir ryšių technologijų aptarnavimo technikas",
-          image:
-            "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=500&q=80",
+          image: "/icons/it/it_technikas.svg",
           questions: [
             { text: "Pagrindinė kompiuterio plokštė (Motherboard) sujungia visus komponentus į vieną sistemą.", isTrue: true },
             { text: "Norint pagreitinti kompiuterį, visada užtenka tik ištrinti nereikalingus failus iš darbalaukio.", isTrue: false },
@@ -134,8 +137,7 @@ export const appData: AppData = {
         {
           id: "multimedijos_technikas",
           title: "Multimedijos technikas",
-          image:
-            "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=500&q=80",
+          image: "/icons/it/multimedijos_technikas.svg",
           questions: [
             { text: "Multimedijos technikas dirba tik su vaizdu ir niekada neprisiliečia prie garso montavimo.", isTrue: false },
             { text: "RGB spalvų modelis (Raudona, Žalia, Mėlyna) yra standartas skaitmeniniuose ekranuose.", isTrue: true },
@@ -147,8 +149,7 @@ export const appData: AppData = {
         {
           id: "jaunesnysis_programuotojas",
           title: "Jaunesnysis programuotojas",
-          image:
-            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&q=80",
+          image: "/icons/it/jaunesnysis_programuotojas.svg",
           questions: [
             { text: "HTML yra programavimo kalba, skirta kurti sudėtingus dirbtinio intelekto algoritmus.", isTrue: false },
             { text: "Kodo testavimas (debugging) ir klaidų ieškojimas užima didelę dalį programuotojo laiko.", isTrue: true },
@@ -167,8 +168,7 @@ export const appData: AppData = {
         {
           id: "suvirintojas",
           title: "Suvirintojas",
-          image:
-            "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=500&q=80",
+          image: "/icons/inzinerija/suvirintojas.svg",
           questions: [
             { text: "Visi specializuoti MIG/MAG suvirinimo aparatai visada turi ir MMA (elektrodinio) suvirinimo funkciją.", isTrue: false },
             { text: "Suvirinimo skydelis su automatiniu užtamsėjimu apsaugo nuo UV spindulių tik tada, kai užtamsėja.", isTrue: false },
@@ -180,8 +180,7 @@ export const appData: AppData = {
         {
           id: "kebulu_remontininkas",
           title: "Automobilių kėbulų remontininkas",
-          image:
-            "https://images.unsplash.com/photo-1599256621730-535171e28f32?w=500&q=80",
+          image: "/icons/inzinerija/kebulu-remontininkas.svg",
           questions: [
             { text: "Kėbulo geometrijos atstatymui po didelės avarijos naudojami specialūs tempimo stendai.", isTrue: true },
             { text: "Automobilio kėbulo įlenkimus visada būtina lyginti išpjaunant pažeistą vietą ir virinant naują.", isTrue: false },
@@ -193,8 +192,7 @@ export const appData: AppData = {
         {
           id: "auto_remontininkas",
           title: "Transporto priemonių remontininkas",
-          image:
-            "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=500&q=80",
+          image: "/icons/inzinerija/transporto-priemoniu-remontininkas.svg",
           questions: [
             { text: "Moderniame automobilyje diagnostika dažniausiai atliekama prisijungiant per OBD jungtį.", isTrue: true },
             { text: "Stabdžių kaladėles reikia keisti tik tada, kai jos nutrupa ir pradeda skleisti garsą.", isTrue: false },
@@ -206,8 +204,7 @@ export const appData: AppData = {
         {
           id: "elektrikas",
           title: "Elektrikas",
-          image:
-            "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=500&q=80",
+          image: "/icons/inzinerija/elektrikas.svg",
           questions: [
             { text: "Žmogaus kūnui pavojingiausia yra elektros srovės stiprumas (amperai), o ne vien įtampa (voltai).", isTrue: true },
             { text: "Įžeminimas namo elektros tinkle reikalingas tik tam, kad elektros lemputės šviestų ryškiau.", isTrue: false },
@@ -219,8 +216,7 @@ export const appData: AppData = {
         {
           id: "mechatronikas",
           title: "Automatinių sistemų mechatronikas",
-          image:
-            "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=500&q=80",
+          image: "/icons/inzinerija/mechatronikas.svg",
           questions: [
             { text: "Mechatronika į vieną visumą apjungia mechaniką, elektroniką ir programavimą (IT).", isTrue: true },
             { text: "Gamyklos konvejerių linijoms valdyti dažniausiai naudojami programuojami loginiai valdikliai (PLC).", isTrue: true },
@@ -232,8 +228,7 @@ export const appData: AppData = {
         {
           id: "auto_elektronikas",
           title: "Transporto priemonių elektronikas",
-          image:
-            "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=500&q=80",
+          image: "/icons/inzinerija/transporto-priemoniu-elektronikas.svg",
           questions: [
             { text: "Šiuolaikiniame automobilyje gali būti daugiau nei 50 kompiuterių, sujungtų į bendrą CAN tinklą.", isTrue: true },
             { text: "Jei užsidega „Check Engine“ lemputė, tai visada reiškia, kad varikliui trūksta tepalo.", isTrue: false },
@@ -245,8 +240,7 @@ export const appData: AppData = {
         {
           id: "stakliu_operatorius",
           title: "Metalo apdirbimo staklių operatorius",
-          image:
-            "https://images.unsplash.com/photo-1565515268481-8b209e9db677?w=500&q=80",
+          image: "/icons/inzinerija/stakliu-operatorius.svg",
           questions: [
             { text: "CNC staklės detales gamina automatiškai, pagal iš anksto parašytą G-kodą.", isTrue: true },
             { text: "Dirbant su programuojamomis metalo lankstymo staklėmis, būtina atsižvelgti į metalo storį ir elastingumą.", isTrue: true },
@@ -265,8 +259,7 @@ export const appData: AppData = {
         {
           id: "floristas",
           title: "Floristas",
-          image:
-            "https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=500&q=80",
+          image: "/icons/menai/floristas.svg",
           questions: [
             { text: "Floristikoje svarbu išmanyti ne tik gėlių rūšis, bet ir spalvų derinimo dėsnius.", isTrue: true },
             { text: "Pamerktos skintos gėlės ilgiausiai išsilaiko pastatytos ant tiesioginių saulės spindulių.", isTrue: false },
@@ -285,8 +278,7 @@ export const appData: AppData = {
         {
           id: "kosmetikas",
           title: "Kosmetikas",
-          image:
-            "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80",
+          image: "/icons/paslaugos/kosmetikas.svg",
           questions: [
             { text: "Kosmetikas atlieka veido valymo, drėkinimo ir maitinimo procedūras.", isTrue: true },
             { text: "Kosmetikas turi teisę atliekant procedūras naudoti botokso injekcijas.", isTrue: false },
@@ -298,8 +290,7 @@ export const appData: AppData = {
         {
           id: "vizazistas",
           title: "Vizažistas",
-          image:
-            "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80",
+          image: "/icons/paslaugos/vizazistas.svg",
           questions: [
             { text: "Vizažisto pagrindinis darbas yra tik užtepti makiažo pagrindą (pudrą).", isTrue: false },
             { text: "Vizažistas parenka makiažą atsižvelgdamas į kliento veido bruožus ir odos tipą.", isTrue: true },
@@ -311,8 +302,7 @@ export const appData: AppData = {
         {
           id: "virejas",
           title: "Virėjas",
-          image:
-            "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=500&q=80",
+          image: "/icons/paslaugos/virejas.svg",
           questions: [
             { text: "Virėjas privalo išmanyti maisto saugos ir higienos reikalavimus.", isTrue: true },
             { text: "Geras virėjas niekada neragauja savo ruošiamo maisto.", isTrue: false },
@@ -324,8 +314,7 @@ export const appData: AppData = {
         {
           id: "konditeris",
           title: "Konditeris",
-          image:
-            "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&q=80",
+          image: "/icons/paslaugos/konditeris.svg",
           questions: [
             { text: "Konditerijoje ingredientų proporcijų tikslumas yra daug svarbesnis nei paprastoje kulinarijoje.", isTrue: true },
             { text: "Konditeriai gamina tik tortus ir pyragus.", isTrue: false },
@@ -337,8 +326,7 @@ export const appData: AppData = {
         {
           id: "padavejas_barmenas",
           title: "Padavėjas ir barmenas",
-          image:
-            "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=500&q=80",
+          image: "/icons/paslaugos/padavejas_barmenas.svg",
           questions: [
             { text: "Padavėjas turi puikiai išmanyti restorano meniu, kad galėtų patarti klientui.", isTrue: true },
             { text: "Barmeno darbas yra tik sumaišyti gėrimus, bendravimas su klientais nėra svarbus.", isTrue: false },
@@ -350,8 +338,7 @@ export const appData: AppData = {
         {
           id: "kambariu_tvarkytojas",
           title: "Kambarių tvarkytojas",
-          image:
-            "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=500&q=80",
+          image: "/icons/paslaugos/kambariu_tvarkytojas.svg",
           questions: [
             { text: "Kambarių tvarkytojas privalo laikytis griežtų viešbučio švaros ir higienos standartų.", isTrue: true },
             { text: "Šis darbas nereikalauja fizinės ištvermės, nes viską atlieka valymo mašinos.", isTrue: false },
@@ -363,8 +350,7 @@ export const appData: AppData = {
         {
           id: "kirpejas",
           title: "Kirpėjas",
-          image:
-            "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80",
+          image: "/icons/paslaugos/kirpejas.svg",
           questions: [
             { text: "Jei dažnai kirpsi plaukų galiukus, plaukai augs daug greičiau.", isTrue: false },
             { text: "Kirpėjas turi išmanyti plauko struktūrą ir cheminių dažų poveikį plaukui.", isTrue: true },
@@ -382,8 +368,7 @@ export const appData: AppData = {
         {
           id: "ikimokyklinio_padejejas",
           title: "Ikimokyklinio ugdymo pedagogo padėjėjas",
-          image:
-            "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500&q=80",
+          image: "/icons/socialine/ikimokyklinio_padejejas.svg",
           questions: [
             { text: "Padėjėjas darželyje tik valo patalpas ir neprisideda prie vaikų ugdymo.", isTrue: false },
             { text: "Šios profesijos atstovas padeda vaikams ugdyti kasdienius higienos ir savitarnos įgūdžius.", isTrue: true },
@@ -395,8 +380,7 @@ export const appData: AppData = {
         {
           id: "individualios_prieziuros",
           title: "Individualios priežiūros darbuotojas",
-          image:
-            "https://images.unsplash.com/photo-1576765974102-b756026ecee3?w=500&q=80",
+          image: "/icons/socialine/individualios_prieziuros.svg",
           questions: [
             { text: "Šis specialistas padeda senyvo amžiaus ar negalią turintiems asmenims atlikti kasdienius buities darbus.", isTrue: true },
             { text: "Individualios priežiūros darbuotojai dirba tik ligoninių reanimacijos skyriuose.", isTrue: false },
@@ -408,8 +392,7 @@ export const appData: AppData = {
         {
           id: "pedagogo_padejejas",
           title: "Pedagogo padėjėjas",
-          image:
-            "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=500&q=80",
+          image: "/icons/socialine/pedagogo_padejejas.svg",
           questions: [
             { text: "Pedagogo padėjėjas mokykloje padeda specialiųjų ugdymosi poreikių turintiems mokiniams įsitraukti į pamoką.", isTrue: true },
             { text: "Padėjėjas turi teisę savarankiškai rašyti pažymius visiems klasės mokiniams.", isTrue: false },
@@ -428,8 +411,7 @@ export const appData: AppData = {
         {
           id: "slaugytojo_padejejas",
           title: "Slaugytojo padėjėjas",
-          image:
-            "https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=500&q=80",
+          image: "/icons/sveikata/slaugytojo_padejejas.svg",
           questions: [
             { text: "Slaugytojo padėjėjas gali savarankiškai skirti ir suleisti vaistus pacientui.", isTrue: false },
             { text: "Emocinis palaikymas ir bendravimas su pacientu yra labai svarbi šio darbo dalis.", isTrue: true },
@@ -441,8 +423,7 @@ export const appData: AppData = {
         {
           id: "paramedikas",
           title: "Paramedikas",
-          image:
-            "https://images.unsplash.com/photo-1582716401301-b2407dc7563d?w=500&q=80",
+          image: "/icons/sveikata/paramedikas.svg",
           questions: [
             { text: "Paramedikai teikia būtinąją medicinos pagalbą įvykio vietoje ir pakeliui į ligoninę.", isTrue: true },
             { text: "Paramediko darbas yra ramus ir nereikalauja fizinės ištvermės.", isTrue: false },
@@ -454,8 +435,7 @@ export const appData: AppData = {
         {
           id: "masazistas",
           title: "Gydomojo masažo specialistas",
-          image:
-            "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80",
+          image: "/icons/sveikata/masazistas.svg",
           questions: [
             { text: "Gydomasis masažas naudojamas tik atsipalaidavimui ir neturi medicininio poveikio.", isTrue: false },
             { text: "Masažas efektyviai padeda pagerinti kraujotaką ir sumažinti raumenų įtampą.", isTrue: true },
@@ -474,8 +454,7 @@ export const appData: AppData = {
         {
           id: "eksped",
           title: "Ekspeditorius",
-          image:
-            "https://images.unsplash.com/photo-1586528116311-ad8ed7c50a40?w=500&q=80",
+          image: "/icons/transportas/eksped.svg",
           questions: [
             { text: "Ekspeditorius yra tas pats, kas tolimųjų reisų vairuotojas.", isTrue: false },
             { text: "Ekspeditoriaus užduotis yra sekti krovinio vietą ir informuoti klientą.", isTrue: true },
@@ -487,8 +466,7 @@ export const appData: AppData = {
         {
           id: "vairuot",
           title: "Motorinių transporto priemonių kroviniams vežti vairuotojas",
-          image:
-            "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=500&q=80",
+          image: "/icons/transportas/vairuot.svg",
           questions: [
             { text: "Krovinių vežimo vairuotojas privalo naudoti tachografą darbo ir poilsio laikui fiksuoti.", isTrue: true },
             { text: "Sunkvežimio vairuotojui nebūtina žinoti krovinio svorio, jei jis telpa į priekabą.", isTrue: false },
@@ -506,8 +484,7 @@ export const appData: AppData = {
         {
           id: "apskaita",
           title: "Apskaitininkas",
-          image:
-            "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500&q=80",
+          image: "/icons/verslas/apskaita.svg",
           questions: [
             { text: "Šiuolaikiniai apskaitininkai didžiąją dalį skaičiavimų atlieka tik popieriuje su skaičiuotuvu.", isTrue: false },
             { text: "Sąvokos „Debetas“ ir „Kreditas“ yra esminis apskaitos pagrindas.", isTrue: true },
@@ -519,8 +496,7 @@ export const appData: AppData = {
         {
           id: "admin",
           title: "Biuro administratorius",
-          image:
-            "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=500&q=80",
+          image: "/icons/verslas/admin.svg",
           questions: [
             { text: "Biuro administratoriaus pagrindinis darbas yra tik virti kavą svečiams.", isTrue: false },
             { text: "Biuro administratorius yra pirmasis asmuo, pasitinkantis įmonės klientus.", isTrue: true },
@@ -539,8 +515,7 @@ export const appData: AppData = {
         {
           id: "zud",
           title: "Žemės ūkio darbuotojas",
-          image:
-            "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=500&q=80",
+          image: "/icons/zemesukis/zud.svg",
           questions: [
             { text: "Karvės turi 4 skrandžio skyrius, kad suvirškintų žolę.", isTrue: true },
             { text: "Augalai naktį išskiria anglies dioksidą, o ne jį sugeria.", isTrue: true },
@@ -552,8 +527,7 @@ export const appData: AppData = {
         {
           id: "agro",
           title: "Agroverslo darbuotojas",
-          image:
-            "https://images.unsplash.com/photo-1592982537447-6f2334208f86?w=500&q=80",
+          image: "/icons/zemesukis/agro.svg",
           questions: [
             { text: "Ekologiškuose ūkiuose visiškai draudžiama naudoti bet kokias trąšas.", isTrue: false },
             { text: "Lietuva yra viena didžiausių grūdų eksportuotojų Europoje vienam gyventojui.", isTrue: true },
@@ -565,8 +539,7 @@ export const appData: AppData = {
         {
           id: "dekor",
           title: "Dekoratyvinio apželdinimo darbuotojas",
-          image:
-            "https://images.unsplash.com/photo-1589123053646-4e89bb9e414c?w=500&q=80",
+          image: "/icons/zemesukis/dekor.svg",
           questions: [
             { text: "Vejos skarifikavimas padeda pašalinti seną žolę ir samanų veltinį.", isTrue: true },
             { text: "Kalninės pušys reikalauja ypač derlingos žemės ir nuolatinio laistymo.", isTrue: false },

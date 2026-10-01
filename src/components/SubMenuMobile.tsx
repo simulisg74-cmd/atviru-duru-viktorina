@@ -8,24 +8,26 @@ interface SubMenuMobileProps {
 }
 
 export default function SubMenuMobile({ sector, onSelect }: SubMenuMobileProps) {
-  const { title, icon, professions } = sector;
+  const { title, professions } = sector;
 
   return (
-    <main className="mx-auto min-h-screen max-w-md bg-slate-900 p-6 text-white">
-      <header className="mb-6 flex items-center gap-3">
-        <span className="text-4xl" aria-hidden="true">
-          {icon}
-        </span>
-        <div>
-          <h1 className="text-xl font-extrabold leading-tight">{title}</h1>
-          <p className="text-sm text-slate-400">
-            Pasirink profesiją ir atsakyk į teiginius
-          </p>
-        </div>
+    <main className="mx-auto min-h-screen max-w-md bg-menu-bg p-6 text-slate-900">
+      <img
+        src="/logo/pmc-logo.png"
+        alt="Panevėžio mokymo centras"
+        draggable={false}
+        className="mx-auto mb-6 h-24 w-auto select-none"
+      />
+
+      <header className="mb-6 text-center">
+        <h1 className="text-xl font-extrabold leading-tight">{title}</h1>
+        <p className="text-sm text-slate-700">
+          Pasirink profesiją ir atsakyk į 5 klausymus
+        </p>
       </header>
 
       {professions.length === 0 ? (
-        <p className="rounded-2xl border border-dashed border-slate-600 p-6 text-center text-slate-400">
+        <p className="rounded-2xl border border-dashed border-slate-500 p-6 text-center text-slate-700">
           Šio sektoriaus profesijos bus pridėtos netrukus.
         </p>
       ) : (
@@ -35,22 +37,19 @@ export default function SubMenuMobile({ sector, onSelect }: SubMenuMobileProps) 
               <button
                 type="button"
                 onClick={() => onSelect(profession.id)}
-                className="flex w-full items-center gap-4 rounded-2xl border border-white/10 bg-slate-800 p-3 text-left transition hover:bg-slate-700 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-400 active:scale-[0.98]"
+                className="flex w-full items-center gap-4 rounded-2xl border border-white/10 bg-card-bg p-3 text-left text-white transition hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-indigo-400 active:scale-[0.98]"
               >
                 <ProfessionImage
                   src={profession.image}
+                  icon={profession.icon}
                   alt=""
                   className="h-20 w-20 shrink-0 rounded-xl"
+                  iconClassName="text-4xl"
                 />
-                <span className="flex-1">
-                  <span className="block text-lg font-semibold leading-snug">
-                    {profession.title}
-                  </span>
-                  <span className="text-sm text-slate-400">
-                    Teiginių: {profession.questions.length}
-                  </span>
+                <span className="flex-1 text-lg font-semibold leading-snug">
+                  {profession.title}
                 </span>
-                <ChevronRight className="shrink-0 text-slate-400" aria-hidden="true" />
+                <ChevronRight className="shrink-0 text-slate-200" aria-hidden="true" />
               </button>
             </li>
           ))}
