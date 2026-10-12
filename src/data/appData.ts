@@ -410,7 +410,6 @@ export const appData: AppData = {
           image: "/icons/sveikata/paramedikas.svg",
           questions: [
             { text: "Paramedikai teikia būtinąją medicinos pagalbą įvykio vietoje ir pakeliui į ligoninę.", isTrue: true },
-            { text: "Paramediko darbas yra ramus ir nereikalauja fizinės ištvermės.", isTrue: false },
             { text: "Defibriliatorius naudojamas atkurti normalų širdies ritmą staigios mirties atveju.", isTrue: true },
             { text: "Greitosios pagalbos automobilyje paramedikai atlieka sudėtingas chirurgines operacijas.", isTrue: false },
             { text: "Gebėjimas dirbti didelio streso sąlygomis yra esminė šios profesijos savybė.", isTrue: true },
