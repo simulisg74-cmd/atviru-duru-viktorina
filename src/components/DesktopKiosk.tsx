@@ -1,5 +1,6 @@
 import { QRCodeSVG } from "qrcode.react";
 import { appData, SECTOR_IDS } from "../data/appData";
+import SectorIcon from "./SectorIcon";
 
 function sectorUrl(key: string): string {
   return window.location.origin + "/?spec=" + key;
@@ -31,7 +32,8 @@ export default function DesktopKiosk() {
         className="mx-auto grid max-w-[1800px] grid-cols-2 gap-6 lg:grid-cols-3 2xl:grid-cols-4"
       >
         {SECTOR_IDS.map((key) => {
-          const { title, icon, professions } = appData.sectors[key];
+          const sector = appData.sectors[key];
+          const { title, professions } = sector;
           const available = professions.length > 0;
 
           return (
@@ -39,9 +41,7 @@ export default function DesktopKiosk() {
               key={key}
               className="flex flex-col items-center gap-4 rounded-3xl border border-white/10 bg-slate-800/70 p-6 text-center shadow-xl shadow-black/30 transition duration-300 hover:z-10 hover:scale-105 hover:border-indigo-400/70 hover:bg-slate-800"
             >
-              <span className="text-6xl" aria-hidden="true">
-                {icon}
-              </span>
+              <SectorIcon sector={sector} className="h-24 w-24 lg:h-28 lg:w-28" />
               <h2 className="flex min-h-16 items-center text-xl font-bold leading-snug lg:text-2xl">
                 {title}
               </h2>

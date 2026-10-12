@@ -35,7 +35,7 @@ export default function MobileFlow({ specParam, initialProfessionId = null }: Mo
       <SwipeQuiz
         key={profession.id}
         profession={profession}
-        sectorIcon={sector.icon}
+        sector={sector}
         onExit={() => setProfessionId(null)}
       />
     );

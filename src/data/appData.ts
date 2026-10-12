@@ -34,6 +34,9 @@ export interface Profession {
 
 export interface Sector {
   title: string;
+  /** Sektoriaus iliustracija; jei jos nėra arba nepavyksta užkrauti, rodoma `icon`. */
+  image?: string;
+  /** Emoji ikona – atsarginis variantas. */
   icon: string;
   professions: readonly Profession[];
 }
@@ -46,6 +49,7 @@ export const appData: AppData = {
   sectors: {
     architektura: {
       title: "Architektūra ir statyba",
+      image: "/icons/sektoriai/architektura.jpg",
       icon: "🏗️",
       professions: [
         {
@@ -86,6 +90,7 @@ export const appData: AppData = {
 
     gamyba: {
       title: "Gamyba ir perdirbimas",
+      image: "/icons/sektoriai/gamyba.jpg",
       icon: "🏭",
       professions: [
         {
@@ -115,6 +120,7 @@ export const appData: AppData = {
 
     it: {
       title: "Informacijos ir ryšio technologijos",
+      image: "/icons/sektoriai/it.jpg",
       icon: "💻",
       professions: [
         {
@@ -155,6 +161,7 @@ export const appData: AppData = {
 
     inzinerija: {
       title: "Inžinerija ir inžinerinės profesijos",
+      image: "/icons/sektoriai/inzinerija.jpg",
       icon: "⚡",
       professions: [
         {
@@ -239,6 +246,7 @@ export const appData: AppData = {
 
     menai: {
       title: "Menai",
+      image: "/icons/sektoriai/menai.jpg",
       icon: "🎨",
       professions: [
         {
@@ -257,6 +265,7 @@ export const appData: AppData = {
 
     paslaugos: {
       title: "Paslaugos asmenims",
+      image: "/icons/sektoriai/paslaugos.jpg",
       icon: "🍳",
       professions: [
         {
@@ -340,6 +349,7 @@ export const appData: AppData = {
     },
     socialine: {
       title: "Socialinė gerovė ir švietimas",
+      image: "/icons/sektoriai/socialine.jpg",
       icon: "🤝",
       professions: [
         {
@@ -380,6 +390,7 @@ export const appData: AppData = {
 
     sveikata: {
       title: "Sveikatos priežiūra",
+      image: "/icons/sektoriai/sveikata.jpg",
       icon: "🩺",
       professions: [
         {
@@ -421,6 +432,7 @@ export const appData: AppData = {
 
     transportas: {
       title: "Transporto paslaugos",
+      image: "/icons/sektoriai/transportas.jpg",
       icon: "🚚",
       professions: [
         {
@@ -449,6 +461,7 @@ export const appData: AppData = {
     },
     verslas: {
       title: "Verslas ir administravimas",
+      image: "/icons/sektoriai/verslas.jpg",
       icon: "📈",
       professions: [
         {
@@ -478,6 +491,7 @@ export const appData: AppData = {
 
     zemesukis: {
       title: "Žemės ūkis",
+      image: "/icons/sektoriai/zemesukis.jpg",
       icon: "🌾",
       professions: [
         {

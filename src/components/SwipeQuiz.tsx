@@ -7,9 +7,10 @@ import {
   useState,
 } from "react";
 import TinderCard from "react-tinder-card";
-import type { Profession, Question } from "../data/appData";
+import type { Profession, Question, Sector } from "../data/appData";
 import LoseScreen from "./LoseScreen";
 import ProfessionImage from "./ProfessionImage";
+import SectorIcon from "./SectorIcon";
 import WinScreen from "./WinScreen";
 
 type Direction = "left" | "right" | "up" | "down";
@@ -148,7 +149,7 @@ const SwipeCard = memo(function SwipeCard({
 
 interface SwipeQuizProps {
   profession: Profession;
-  sectorIcon: string;
+  sector: Pick<Sector, "image" | "icon">;
   onExit: () => void;
 }
 
@@ -159,7 +160,7 @@ interface Stats {
 
 export default function SwipeQuiz({
   profession,
-  sectorIcon,
+  sector,
   onExit,
 }: SwipeQuizProps) {
   // Klausimų tvarka sumaišoma vieną kartą įėjus į profesiją.
@@ -253,9 +254,11 @@ export default function SwipeQuiz({
           >
             <ArrowLeft aria-hidden="true" />
           </button>
-          <span className="text-2xl" aria-hidden="true">
-            {sectorIcon}
-          </span>
+          <SectorIcon
+            sector={sector}
+            className="h-10 w-10 shrink-0 rounded-xl"
+            iconClassName="text-2xl"
+          />
           <h1 className="text-sm font-semibold leading-tight text-slate-800">
             {profession.title}
           </h1>
