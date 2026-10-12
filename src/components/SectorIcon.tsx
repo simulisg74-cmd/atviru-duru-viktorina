@@ -10,7 +10,7 @@ interface SectorIconProps {
 }
 
 /**
- * Sektoriaus ikona: iliustracija baltoje suapvalintoje plytelėje.
+ * Sektoriaus ikona: iliustracija su permatomu fonu.
  * Jei paveikslėlio nėra arba jo nepavyksta užkrauti, rodoma emoji ikona.
  */
 export default function SectorIcon({
@@ -38,7 +38,7 @@ export default function SectorIcon({
       aria-hidden="true"
       draggable={false}
       onError={() => setFailed(true)}
-      className={`pointer-events-none select-none rounded-2xl bg-white object-contain ${className}`}
+      className={`pointer-events-none select-none object-contain ${className}`}
     />
   );
 }

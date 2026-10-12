@@ -256,7 +256,7 @@ export default function SwipeQuiz({
           </button>
           <SectorIcon
             sector={sector}
-            className="h-10 w-10 shrink-0 rounded-xl"
+            className="h-10 w-10 shrink-0"
             iconClassName="text-2xl"
           />
           <h1 className="text-sm font-semibold leading-tight text-slate-800">

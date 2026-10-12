@@ -49,7 +49,7 @@ export const appData: AppData = {
   sectors: {
     architektura: {
       title: "Architektūra ir statyba",
-      image: "/icons/sektoriai/architektura.jpg",
+      image: "/icons/sektoriai/architektura.png",
       icon: "🏗️",
       professions: [
         {
@@ -90,7 +90,7 @@ export const appData: AppData = {
 
     gamyba: {
       title: "Gamyba ir perdirbimas",
-      image: "/icons/sektoriai/gamyba.jpg",
+      image: "/icons/sektoriai/gamyba.png",
       icon: "🏭",
       professions: [
         {
@@ -120,7 +120,7 @@ export const appData: AppData = {
 
     it: {
       title: "Informacijos ir ryšio technologijos",
-      image: "/icons/sektoriai/it.jpg",
+      image: "/icons/sektoriai/it.png",
       icon: "💻",
       professions: [
         {
@@ -161,7 +161,7 @@ export const appData: AppData = {
 
     inzinerija: {
       title: "Inžinerija ir inžinerinės profesijos",
-      image: "/icons/sektoriai/inzinerija.jpg",
+      image: "/icons/sektoriai/inzinerija.png",
       icon: "⚡",
       professions: [
         {
@@ -246,7 +246,7 @@ export const appData: AppData = {
 
     menai: {
       title: "Menai",
-      image: "/icons/sektoriai/menai.jpg",
+      image: "/icons/sektoriai/menai.png",
       icon: "🎨",
       professions: [
         {
@@ -265,7 +265,7 @@ export const appData: AppData = {
 
     paslaugos: {
       title: "Paslaugos asmenims",
-      image: "/icons/sektoriai/paslaugos.jpg",
+      image: "/icons/sektoriai/paslaugos.png",
       icon: "🍳",
       professions: [
         {
@@ -349,7 +349,7 @@ export const appData: AppData = {
     },
     socialine: {
       title: "Socialinė gerovė ir švietimas",
-      image: "/icons/sektoriai/socialine.jpg",
+      image: "/icons/sektoriai/socialine.png",
       icon: "🤝",
       professions: [
         {
@@ -390,7 +390,7 @@ export const appData: AppData = {
 
     sveikata: {
       title: "Sveikatos priežiūra",
-      image: "/icons/sektoriai/sveikata.jpg",
+      image: "/icons/sektoriai/sveikata.png",
       icon: "🩺",
       professions: [
         {
@@ -432,7 +432,7 @@ export const appData: AppData = {
 
     transportas: {
       title: "Transporto paslaugos",
-      image: "/icons/sektoriai/transportas.jpg",
+      image: "/icons/sektoriai/transportas.png",
       icon: "🚚",
       professions: [
         {
@@ -461,7 +461,7 @@ export const appData: AppData = {
     },
     verslas: {
       title: "Verslas ir administravimas",
-      image: "/icons/sektoriai/verslas.jpg",
+      image: "/icons/sektoriai/verslas.png",
       icon: "📈",
       professions: [
         {
@@ -491,7 +491,7 @@ export const appData: AppData = {
 
     zemesukis: {
       title: "Žemės ūkis",
-      image: "/icons/sektoriai/zemesukis.jpg",
+      image: "/icons/sektoriai/zemesukis.png",
       icon: "🌾",
       professions: [
         {
