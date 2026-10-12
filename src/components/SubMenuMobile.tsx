@@ -22,7 +22,7 @@ export default function SubMenuMobile({ sector, onSelect }: SubMenuMobileProps) 
       <header className="mb-6 text-center">
         <h1 className="text-xl font-extrabold leading-tight">{title}</h1>
         <p className="text-sm text-slate-700">
-          Pasirink profesiją ir atsakyk į 5 klausymus
+          Pasirink profesiją ir atsakyk į 4 klausimus
         </p>
       </header>
 
