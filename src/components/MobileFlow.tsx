@@ -5,10 +5,12 @@ import SwipeQuiz from "./SwipeQuiz";
 
 interface MobileFlowProps {
   specParam: string;
+  /** Profesijos id iš nuorodos (`&prof=...`); jei neegzistuoja, rodomas sektoriaus meniu. */
+  initialProfessionId?: string | null;
 }
 
-export default function MobileFlow({ specParam }: MobileFlowProps) {
-  const [professionId, setProfessionId] = useState<string | null>(null);
+export default function MobileFlow({ specParam, initialProfessionId = null }: MobileFlowProps) {
+  const [professionId, setProfessionId] = useState<string | null>(initialProfessionId);
 
   if (!isSectorId(specParam)) {
     return (
